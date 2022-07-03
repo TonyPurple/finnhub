@@ -1,6 +1,7 @@
 import requests
 import json
 from pprint import pprint
+import csv
 
 token = "cb0ssoqad3idnllqhtr0"
 symbol = "AAPL"
@@ -32,4 +33,16 @@ pprint(company_quote2)
 pprint(company_quote3)
 pprint(company_quote4)
 
-most_volatile_stock = symbol1
+most_volatile_stock = company_quote1
+
+header = ['stock_symbol', 'percentage_change', 'current_price', 'last_close_price']
+data = ['AMZN', 3.1541, 109.56, 106.21]
+
+with open('most_volatile_stock.csv', 'w', encoding='UTF8') as f:
+    writer = csv.writer(f)
+
+    # write the header
+    writer.writerow(header)
+
+    # write the data
+    writer.writerow(data)
